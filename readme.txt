@@ -3,8 +3,8 @@ Contributors: nabtron
 Donate link: http://nabtron.com/nablab/
 Tags: wrapper, wordpress, joomla, frame, iframe, page, nabwrapper, wpwrapper, wp-wrapper
 Requires at least: 2.5
-Tested up to: 4.5
-Stable tag: 1.1.7
+Tested up to: 4.7
+Stable tag: 1.1.8
 
 Wrapper for WordPress pages using iFrame. Various options in admin panel
 
@@ -51,6 +51,9 @@ Currently short codes are not supported. Later versions will include option to g
 
 == Changelog ==
 
+= 1.1.8 =
+* WP 4.7 compatible now
+
 = 1.1.7 =
 * fixed fatal error on older versions of PHP under 5.3
 
@@ -58,22 +61,22 @@ Currently short codes are not supported. Later versions will include option to g
 * security update
 * added nonces
 * added capability check
-* added sanitization check
+* added sanitisation check
 * changed default url
-* wp 4.5 compatible now
+* WP 4.5 compatible now
 
 = 1.1.5 =
 * security update
-* wp 4.4.2 compatible now
+* WP 4.4.2 compatible now
 
 = 1.1.4 =
-* wp 4.2.2 compatible now
+* WP 4.2.2 compatible now
 
 = 1.1.3 =
-* wp 4.0 compatible now
+* WP 4.0 compatible now
 
 = 1.1.2 =
-* wp 3.7.1 compatible now
+* WP 3.7.1 compatible now
 
 = 1.1.1 =
 * fixed bug - showing wrapper on non-selected pages
@@ -87,11 +90,5 @@ Currently short codes are not supported. Later versions will include option to g
 
 == Upgrade Notice ==
 
-= 1.1.1 =
-bug fixed - showing wrapper on all pages
-
-= 1.1 = 
-Added https option and minor performance improvement
-
-= 1.0 =
-Initial release
+= 1.1.8 =
+Compatibility fix for WordPress 4.7

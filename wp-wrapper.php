@@ -3,11 +3,11 @@
 Plugin Name: WP Wrapper
 Plugin URI: http://www.nabtron.com/wp-wrapper/
 Description: Wrapper plugin for wordpress
-Version: 1.1.7
+Version: 1.1.8
 Author: Nabtron
 Author URI: http://nabtron.com/
 Min WP Version: 2.5
-Max WP Version: 4.5
+Max WP Version: 4.7
 */
 
 // declaring classes and functions
