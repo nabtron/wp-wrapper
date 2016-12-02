@@ -3,7 +3,7 @@
 Plugin Name: WP Wrapper
 Plugin URI: http://www.nabtron.com/wp-wrapper/
 Description: Wrapper plugin for wordpress
-Version: 1.1.8
+Version: 1.1.9.a
 Author: Nabtron
 Author URI: http://nabtron.com/
 Min WP Version: 2.5
@@ -18,7 +18,8 @@ class Walker_PageDropdownnew extends Walker {
 
 	var $db_fields = array ('parent' => 'post_parent', 'id' => 'ID');
 
-	function start_el(&$output, $page, $depth, $args) {
+	function start_el(&$output, $object, $depth = 0, $args = Array(), $current_object_id = 0) {
+		$page = $object;
 		$pad = str_repeat('&nbsp;', $depth * 3);
 
 		$output .= "\t<option class=\"level-$depth\" value=\"$page->ID\"";
@@ -86,32 +87,33 @@ function nabwrap_addlink() {
 // Update routines
 add_action('init', 'nabwrapper_init_func');
 function nabwrapper_init_func() {
-	if ( !wp_verify_nonce( $_POST['nabwrap_noncename'], plugin_basename(__FILE__) )) {
-		return;
+	if(isset($_POST['nabwrap_noncename'])){
+		if ( !wp_verify_nonce( $_POST['nabwrap_noncename'], plugin_basename(__FILE__) )) {
+			return;
+		}
 	}
 	if ( !current_user_can( 'manage_options' )){
 		return;
 	}
-	if ('insert' == $_POST['action_nabwrap']) {
-	        update_option("nabwrap_url",sanitize_url($_POST['nabwrap_url']));
-	        update_option("nabwrap_page",sanitize_text_field($_POST['nabwrap_page']));
-	        update_option("nabwrap_width",sanitize_text_field($_POST['nabwrap_width']));
-	        update_option("nabwrap_height",sanitize_text_field($_POST['nabwrap_height']));
-		$nabwrap_border = intval( $_POST['nabwrap_border'] );
-		if ( ! $nabwrap_border ) {
-		  $nabwrap_border = '';
+	if(isset($_POST['nabwrap_noncename'])){
+		if ('insert' == $_POST['action_nabwrap']) {
+		        update_option("nabwrap_url",sanitize_url($_POST['nabwrap_url']));
+		        update_option("nabwrap_page",sanitize_text_field($_POST['nabwrap_page']));
+		        update_option("nabwrap_width",sanitize_text_field($_POST['nabwrap_width']));
+		        update_option("nabwrap_height",sanitize_text_field($_POST['nabwrap_height']));
+			$nabwrap_border = intval( $_POST['nabwrap_border'] );
+			if ( ! $nabwrap_border ) {
+			  $nabwrap_border = '';
+			}
+		        update_option("nabwrap_border",sanitize_text_field($nabwrap_border));
+		        update_option("nabwrap_scroll",sanitize_text_field($_POST['nabwrap_scroll']));
+		        update_option("nabwrap_addlink",sanitize_text_field($_POST['nabwrap_addlink']));
 		}
-	        update_option("nabwrap_border",sanitize_text_field($nabwrap_border));
-	        update_option("nabwrap_scroll",sanitize_text_field($_POST['nabwrap_scroll']));
-	        update_option("nabwrap_addlink",sanitize_text_field($_POST['nabwrap_addlink']));
 	}
 }
 
 if (!class_exists('nabwrap_main')) {
 	class nabwrap_main {
-		// PHP 4 Compatible Constructor
-		function nabwrap_main(){$this->__construct();}
-
 		// PHP 5 Constructor
 		function __construct(){
 			add_action('admin_menu', 'nabwrap_description_add_menu');
