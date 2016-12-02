@@ -97,7 +97,7 @@ function nabwrapper_init_func() {
 	}
 	if(isset($_POST['nabwrap_noncename'])){
 		if ('insert' == $_POST['action_nabwrap']) {
-		        update_option("nabwrap_url",sanitize_url($_POST['nabwrap_url']));
+		        update_option("nabwrap_url",esc_url_raw($_POST['nabwrap_url']));
 		        update_option("nabwrap_page",sanitize_text_field($_POST['nabwrap_page']));
 		        update_option("nabwrap_width",sanitize_text_field($_POST['nabwrap_width']));
 		        update_option("nabwrap_height",sanitize_text_field($_POST['nabwrap_height']));
