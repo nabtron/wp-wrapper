@@ -107,6 +107,8 @@ function nabwrapper_init_func() {
 			}
 		        update_option("nabwrap_border",sanitize_text_field($nabwrap_border));
 		        update_option("nabwrap_scroll",sanitize_text_field($_POST['nabwrap_scroll']));
+		        // checkbox don't send value when not checked, so creating a blank entry in $_POST if it's not set to remove the PHP notice of Undefined Index
+		        if(!isset($_POST['nabwrap_addlink'])){$_POST['nabwrap_addlink'] = '';}
 		        update_option("nabwrap_addlink",sanitize_text_field($_POST['nabwrap_addlink']));
 		}
 	}
