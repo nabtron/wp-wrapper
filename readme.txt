@@ -4,7 +4,7 @@ Donate link: http://nabtron.com/nablab/
 Tags: wrapper, wordpress, joomla, frame, iframe, page, nabwrapper, wpwrapper, wp-wrapper
 Requires at least: 2.5
 Tested up to: 4.7
-Stable tag: 1.1.8
+Stable tag: 1.1.9.a
 
 Wrapper for WordPress pages using iFrame. Various options in admin panel
 
