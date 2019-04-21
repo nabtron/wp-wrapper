@@ -3,11 +3,11 @@
 Plugin Name: WP Wrapper
 Plugin URI: http://www.nabtron.com/wp-wrapper/
 Description: Wrapper plugin for wordpress
-Version: 1.1.8
+Version: 1.2.1
 Author: Nabtron
 Author URI: http://nabtron.com/
-Min WP Version: 2.5
-Max WP Version: 4.7
+Min WP Version: 5.0
+Max WP Version: 5.1.1
 */
 
 // declaring classes and functions
@@ -18,15 +18,14 @@ class Walker_PageDropdownnew extends Walker {
 
 	var $db_fields = array ('parent' => 'post_parent', 'id' => 'ID');
 
-	function start_el(&$output, $page, $depth, $args) {
+	function start_el(&$output, $page, $depth = 0, $args = Array(), $current_object_id = 0) {
 		$pad = str_repeat('&nbsp;', $depth * 3);
-
 		$output .= "\t<option class=\"level-$depth\" value=\"$page->ID\"";
 		if ( $page->ID == get_option("nabwrap_page") )
 			$output .= ' selected="selected"';
 		$output .= '>';
 		$title = esc_html($page->post_title);
-		$title = apply_filters( 'list_pages', $page->post_title );
+		$title = apply_filters( 'list_pages', $page->post_title, $page );
 		$output .= "$pad$title";
 		$output .= "</option>\n";
 	}
@@ -85,7 +84,10 @@ function nabwrap_addlink() {
 
 // Update routines
 add_action('init', 'nabwrapper_init_func');
-function nabwrapper_init_func() {
+	function nabwrapper_init_func() {
+		if ( empty($_POST['nabwrap_noncename']) ) {
+			return;
+	}
 	if ( !wp_verify_nonce( $_POST['nabwrap_noncename'], plugin_basename(__FILE__) )) {
 		return;
 	}
@@ -213,4 +215,3 @@ if (!class_exists('nabwrap_main')) {
 if (class_exists('nabwrap_main')) {
 	$nabwrap_main = new nabwrap_main();
 }
-?>
