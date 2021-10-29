@@ -1,10 +1,10 @@
 === Plugin Name ===
 Contributors: nabtron
-Donate link: http://nabtron.com/nablab/
+Donate link: https://nabtron.com/nablab/
 Tags: wrapper, wordpress, joomla, frame, iframe, page, nabwrapper, wpwrapper, wp-wrapper
 Requires at least: 5.0
-Tested up to: 5.1.1
-Stable tag: 1.2.1
+Tested up to: 5.8.1
+Stable tag: 1.2.5
 
 Wrapper for WordPress pages using iFrame. Various options in admin panel
 
@@ -50,6 +50,19 @@ Currently short codes are not supported. Later versions will include option to g
 1. Wrapper for WordPress pages using iFrame. Various options in admin panel
 
 == Changelog ==
+
+= 1.2.5 =
+* WP 5.8.1 compatible now
+
+= 1.2.4 =
+* WP 5.5.3 compatible now
+
+= 1.2.3 =
+* WP 5.3.2 compatible now
+
+= 1.2.2 =
+* Added Settings link on plugins page
+* WP 5.2.2 compatible now
 
 = 1.2.1 =
 * Fixes PHP notice issue
@@ -97,6 +110,5 @@ Currently short codes are not supported. Later versions will include option to g
 
 == Upgrade Notice ==
 
-= 1.2.1 =
-Fixes PHP notice issue
-WP 5.1.1 compatible now
+= 1.2.5 =
+ WP 5.8.1 compatible now
